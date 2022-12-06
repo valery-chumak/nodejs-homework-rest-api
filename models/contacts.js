@@ -52,7 +52,7 @@ const updateContact = async (contactId, body) => {
     return null;
   }
 
-  contacts[index] = { id, ...body };
+  contacts[index] = { contactId, ...body };
   await updateFile(contacts);
 
   return contacts[index];
