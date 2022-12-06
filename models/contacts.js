@@ -45,14 +45,14 @@ const addContact = async ({ name, email, phone }) => {
 };
 
 const updateContact = async (contactId, body) => {
-  const contacts = await getAll();
+  const contacts = await listContacts();
   contactId = String(contactId);
   const index = contacts.findIndex((item) => item.id === contactId);
   if (index === -1) {
     return null;
   }
-
-  contacts[index] = { contactId, ...body };
+  const id = contactId;
+  contacts[index] = { id, ...body };
   await updateFile(contacts);
 
   return contacts[index];
