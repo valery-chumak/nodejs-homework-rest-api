@@ -4,4 +4,5 @@ const addScheme = Joi.object({
   email: Joi.string().required(),
   phone: Joi.string().required(),
 });
-module.exports = { addScheme };
+const getScheme = Joi.string().min(1).max(21).required();
+module.exports = { addScheme, getScheme };
