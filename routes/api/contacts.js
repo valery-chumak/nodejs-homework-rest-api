@@ -1,8 +1,9 @@
 const express = require("express");
-
 const router = express.Router();
-
 const сontactСontroller = require("../../controllers/contacts");
+const { validationContacts } = require("../../helpers");
+
+router.use("/:contactId", validationContacts);
 
 router.get("/", сontactСontroller.listContacts);
 
