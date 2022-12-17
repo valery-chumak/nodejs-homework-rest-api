@@ -1,4 +1,4 @@
-const HttpError = require("./HttpError");
+const HttpError = require("../helpers/HttpError");
 const { getScheme } = require("../schemes/contacts");
 const { addScheme } = require("../schemes/contacts");
 const validationContacts = (req, res, next) => {
