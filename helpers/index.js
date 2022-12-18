@@ -1,6 +1,6 @@
 const HttpError = require("./HttpError");
-const validationContacts = require("./validationContacts");
+const handleMongooseError = require("./handleMongooseError");
 module.exports = {
   HttpError,
-  validationContacts,
+  handleMongooseError,
 };
