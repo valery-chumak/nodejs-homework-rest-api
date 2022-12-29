@@ -15,4 +15,6 @@ router.post("/login", validateBody(schemas.loginScheme), userController.login);
 
 router.post("/logout", authenticate, userController.logout);
 
+router.get("/current", authenticate, userController.getCurrent);
+
 module.exports = router;

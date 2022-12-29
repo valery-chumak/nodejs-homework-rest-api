@@ -4,11 +4,9 @@ require("dotenv").config();
 const { SECRET_KEY } = process.env;
 
 const logout = async (req, res, next) => {
-  const { id } = jwt.verify(token, SECRET_KEY);
-  const user = await User.findById(id);
+  const { _id } = req.user;
+  await User.findByIdAndUpdate(_id, { token: "" });
 
-  if (!user) {
-    next(HttpError());
-  }
+  res.status(204).json({ message: "Logout success" });
 };
 module.exports = logout;

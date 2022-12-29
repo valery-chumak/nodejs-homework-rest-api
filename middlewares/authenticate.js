@@ -1,4 +1,4 @@
-const { HttpError } = require("../helpers/HttpError");
+const HttpError = require("../helpers/HttpError");
 const jwt = require("jsonwebtoken");
 const { User } = require("../models/user");
 
@@ -15,7 +15,7 @@ const authenticate = async (req, res, next) => {
   try {
     const { id } = jwt.verify(token, SECRET_KEY);
     const user = await User.findById(id);
-    if (!user) {
+    if (!user || !user.token) {
       next(HttpError(401, "Not authorized"));
     }
     //записуємо в реквест інформацію про юзера, який робить запит
