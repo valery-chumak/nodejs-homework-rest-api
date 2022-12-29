@@ -17,6 +17,10 @@ const contactScheme = new Schema({
     type: Boolean,
     default: false,
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+  },
 });
 contactScheme.post("save", handleMongooseError);
 const addSchema = Joi.object({
