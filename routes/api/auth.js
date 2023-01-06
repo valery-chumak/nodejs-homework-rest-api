@@ -4,7 +4,7 @@ const validateBody = require("../../middlewares/validateBody");
 const { schemas } = require("../../models/user");
 
 const userController = require("../../controllers/auth");
-const { authenticate } = require("../../middlewares");
+const { authenticate, upload } = require("../../middlewares");
 
 router.post(
   "/register",
@@ -18,6 +18,12 @@ router.patch(
   authenticate,
   validateBody(schemas.updateSubscriptionSchema),
   userController.updateSubscription
+);
+router.patch(
+  "/avatars",
+  authenticate,
+  upload.single("avatar"),
+  userController.updateAvatar
 );
 
 router.post("/logout", authenticate, userController.logout);
