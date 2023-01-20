@@ -30,4 +30,10 @@ router.post("/logout", authenticate, userController.logout);
 
 router.get("/current", authenticate, userController.getCurrent);
 
+router.get("/verify/:verificationToken", userController.verify);
+router.post(
+  "/verify",
+  validateBody(schemas.verifyEmailSchema),
+  userController.resendVerifyEmail
+);
 module.exports = router;
